@@ -1,0 +1,80 @@
+Mule 4 - Salesforce to MySql Bidirectional with Exception Handling, MUnit, API Led Connectivity, Water Marking  & Batch Processing, CI/CD with Any version control tool. 
+
+1. Database Details:
+	CREATE TABLE `customer` (
+		  `customerId` varchar(50) NOT NULL,
+		  `customerName` varchar(50) DEFAULT NULL,
+		  `address` varchar(50) DEFAULT NULL,
+		  `email` varchar(50) DEFAULT NULL,
+		  `dob` varchar(50) DEFAULT NULL,
+		  `phone` int DEFAULT NULL,
+		  `gender` varchar(50) DEFAULT NULL,
+		  `registrationDateTime` varchar(50) DEFAULT NULL,
+		  `lastModifiedDateTime` varchar(50) NOT NULL,
+		  PRIMARY KEY (`customerId`)
+		)
+
+2. Salesforce Details: Object Name : customer
+	customerId varchar(50)
+	customerName varchar(50)
+	address varchar(50)
+	email varchar(50)
+	dob varchar(50)
+	phone int DEFAULT
+	gender varchar(50) DEFAULT
+	status varchar(50) DEFAULT
+	registrationDateTime varchar(50)
+	lastModifiedDateTime varchar(50)
+
+
+3. API Details: 
+	1. get customer status details
+		A. Resource:
+		/customers:
+			/status:
+				get:
+		B. request :
+			1. Headers: 
+				a. transactionId
+				b. clientId
+				c. clientSecret
+			2. queryParams
+				a. lastModifiedDateTime
+				b. status
+		C. Response
+			1. Body
+				{
+					"customerStatusResponse" : [{
+						"customerId" : "customer001",
+						"status"	 : "true"
+					}]
+				}
+	2. post customer status details
+		A. Resource:
+		/customers:
+			/status:
+				post:
+		B. request :
+			1. Headers: 
+				a. transactionId
+				b. clientId
+				c. clientSecret
+			2. Body:
+				{
+					"customerStatusRequest" : [{
+						"customerId" : "customer001",
+						"status"	 : "true"
+					}]
+				}
+		C. Response
+			1. Body
+				{
+					"customerStatusResponse" : [{
+						"status"	 : "Record Processed Successfully"
+					}]
+				}
+
+
+Anypoint Platform : 
+username : maheshapril2022
+password: ABCmaheshapril2022

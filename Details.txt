@@ -1,0 +1,151 @@
+Mule 4 - Salesforce to MySql Bidirectional with Exception Handling, MUnit, API Led Connectivity, Water Marking  & Batch Processing, CI/CD with Any version control tool. 
+
+1. Database Details:
+	CREATE TABLE `customer` (
+		  `customerId` varchar(50) NOT NULL,
+		  `customerName` varchar(50) DEFAULT NULL,
+		  `address` varchar(50) DEFAULT NULL,
+		  `email` varchar(50) DEFAULT NULL,
+		  `dob` varchar(50) DEFAULT NULL,
+		  `phone` int DEFAULT NULL,
+		  `gender` varchar(50) DEFAULT NULL,
+		  `registrationDateTime` varchar(50) DEFAULT NULL,
+		  `lastModifiedDateTime` varchar(50) NOT NULL,
+		  PRIMARY KEY (`customerId`)
+		)
+
+2. Salesforce Details: Object Name : customer
+	customerId varchar(50)
+	customerName varchar(50)
+	address varchar(50)
+	email varchar(50)
+	dob varchar(50)
+	phone int DEFAULT
+	gender varchar(50) DEFAULT
+	status varchar(50) DEFAULT
+	registrationDateTime varchar(50)
+	lastModifiedDateTime varchar(50)
+
+
+3. API Details: 
+	1. Post customers details 
+		A. Resources
+		/customers:
+			post:
+		B. request :
+			1. Headers: 
+				a. transactionId
+				b. clientId
+				c. clientSecret
+			3. body:
+				{
+				  "customerRequest": [
+					{
+					  "customerId": "Customer1001",
+					  "customerName": "Name1001",
+					  "address": "House1001",
+					  "email": "email1001@gmail.com",
+					  "dob": "21-12-2001",
+					  "phone": "2378643501",
+					  "gender": "Female",
+					  "status": "false",
+					  "registrationDateTime": "12-02-2233T12:23:01"
+					},
+					{
+					  "customerId": "Customer1002",
+					  "customerName": "Name1002",
+					  "address": "House1002",
+					  "email": "email1002@gmail.com",
+					  "dob": "21-12-2002",
+					  "phone": "2378643502",
+					  "gender": "Female",
+					  "status": "false",
+					  "registrationDateTime": "12-02-2233T12:23:02"
+					}
+				  ]
+				}
+		C. Response
+			1. 200
+				Body
+				{
+					"customerResponse" : [{
+						"customerId" : "customer001",
+						"status"	 : "true"
+					},
+					{
+						"customerId" : "customer002",
+						"status"	 : "true"
+					}]
+				}	
+			2. Error (400,401,404,500)
+				Body
+				{ 
+					"msg"		: "failed operation",
+					"code"		: 400,
+					"eventId"	: "dbfhjsdb-hfb-do8ryt-876t7-5ty"
+					"error"		: {
+						"type"	: "BAD_REQUEST",
+						"title"	: "Invalid Request",
+						"details" : "The input contains invalid data"
+					}
+				}
+
+	
+	1. get customer status details
+		A. Resource:
+		/customers:
+			/status:
+				get:
+		B. request :
+			1. Headers: 
+				a. transactionId
+				b. clientId
+				c. clientSecret
+			2. queryParams
+				a. lastModifiedDateTime
+				b. status
+		C. Response
+			1. Body
+				{
+					"customerStatusResponse" : [{
+						"customerId" : "customer001",
+						"status"	 : "true"
+					}]
+				}
+	2. post customer status details
+		A. Resource:
+		/customers:
+			/status:
+				post:
+		B. request :
+			1. Headers: 
+				a. transactionId
+				b. clientId
+				c. clientSecret
+			2. Body:
+				{
+					"customerStatusRequest" : [{
+						"customerId" : "customer001",
+						"status"	 : "true"
+					}]
+				}
+		C. Response
+			1. Body
+				{
+					"customerStatusResponse" : [{
+						"status"	 : "Record Processed Successfully"
+					}]
+				}
+
+
+Anypoint Platform : 
+username : maheshapril2022
+password: ABCmaheshapril2022
+
+Salesforce:
+username: makm@raweng.com
+password: Salesforce1
+
+Database: 
+username: maheshpkumar198@gmail.com
+password: Salesforce1
