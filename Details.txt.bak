@@ -1,18 +1,19 @@
-Mule 4 - Salesforce to MySql Bidirectional with Exception Handling, MUnit, API Led Connectivity, Water Marking  & Batch Processing, CI/CD with Any version control tool. 
+Mule 4 - Salesforce to MySql Bidirectional with Exception Handling, MUnit, API Led Connectivity, Water Marking  
+& Batch Processing, CI/CD with Any version control tool. 
 
 1. Database Details:
 	CREATE TABLE `customer` (
-		  `customerId` varchar(50) NOT NULL,
-		  `customerName` varchar(50) DEFAULT NULL,
-		  `address` varchar(50) DEFAULT NULL,
-		  `email` varchar(50) DEFAULT NULL,
-		  `dob` varchar(50) DEFAULT NULL,
-		  `phone` int DEFAULT NULL,
-		  `gender` varchar(50) DEFAULT NULL,
-		  `registrationDateTime` varchar(50) DEFAULT NULL,
-		  `lastModifiedDateTime` varchar(50) NOT NULL,
-		  PRIMARY KEY (`customerId`)
-		)
+	  `customerId` varchar(50) NOT NULL,
+	  `customerName` varchar(50) DEFAULT NULL,
+	  `address` varchar(50) DEFAULT NULL,
+	  `email` varchar(50) DEFAULT NULL,
+	  `dob` varchar(50) DEFAULT NULL,
+	  `phone` int DEFAULT NULL,
+	  `gender` varchar(50) DEFAULT NULL,
+	  `registrationDateTime` varchar(50) DEFAULT NULL,
+	  `lastModifiedDateTime` varchar(50) NOT NULL,
+	  PRIMARY KEY (`customerId`)
+	)
 
 2. Salesforce Details: Object Name : customer
 	customerId varchar(50)
@@ -29,9 +30,8 @@ Mule 4 - Salesforce to MySql Bidirectional with Exception Handling, MUnit, API L
 
 3. API Details: 
 	1. Post customers details 
-		A. Resources
-		/customers:
-			post:
+		A. Resources : /customers:
+		B. Method 	 : post
 		B. request :
 			1. Headers: 
 				a. transactionId
@@ -91,32 +91,42 @@ Mule 4 - Salesforce to MySql Bidirectional with Exception Handling, MUnit, API L
 				}
 
 	
-	1. get customer status details
-		A. Resource:
-		/customers:
-			/status:
-				get:
+	2. Get customer status details
+		A. Resource: /customers
+		   Method  : get
 		B. request :
 			1. Headers: 
 				a. transactionId
 				b. clientId
 				c. clientSecret
 			2. queryParams
-				a. lastModifiedDateTime
-				b. status
+				a. lastModifiedDateTime (optional)
+				b. status (optional)
 		C. Response
-			1. Body
+			1. 200
+				Body
 				{
 					"customerStatusResponse" : [{
 						"customerId" : "customer001",
 						"status"	 : "true"
 					}]
 				}
-	2. post customer status details
-		A. Resource:
-		/customers:
-			/status:
-				post:
+			2. Error (400,401,404,500)
+				Body
+				{ 
+					"msg"		: "failed operation",
+					"code"		: 400,
+					"eventId"	: "dbfhjsdb-hfb-do8ryt-876t7-5ty"
+					"error"		: {
+						"type"	: "BAD_REQUEST",
+						"title"	: "Invalid Request",
+						"details" : "The input contains invalid data"
+					}
+				}
+				
+	3. Patch customer status details
+		A. Resource: /customers
+		   Method:   post
 		B. request :
 			1. Headers: 
 				a. transactionId
@@ -124,17 +134,55 @@ Mule 4 - Salesforce to MySql Bidirectional with Exception Handling, MUnit, API L
 				c. clientSecret
 			2. Body:
 				{
-					"customerStatusRequest" : [{
-						"customerId" : "customer001",
-						"status"	 : "true"
-					}]
+				  "customerRequest": [
+					{
+					  "customerId": "Customer1001",
+					  "customerName": "Name1001",
+					  "address": "House1001",
+					  "email": "email1001@gmail.com",
+					  "dob": "21-12-2001",
+					  "phone": "2378643501",
+					  "gender": "Female",
+					  "status": "false",
+					  "registrationDateTime": "12-02-2233T12:23:01"
+					},
+					{
+					  "customerId": "Customer1002",
+					  "customerName": "Name1002",
+					  "address": "House1002",
+					  "email": "email1002@gmail.com",
+					  "dob": "21-12-2002",
+					  "phone": "2378643502",
+					  "gender": "Female",
+					  "status": "false",
+					  "registrationDateTime": "12-02-2233T12:23:02"
+					}
+				  ]
 				}
 		C. Response
-			1. Body
+			1. 200
+				Body
 				{
-					"customerStatusResponse" : [{
-						"status"	 : "Record Processed Successfully"
+					"customerResponse" : [{
+						"customerId" : "customer001",
+						"status"	 : "true"
+					},
+					{
+						"customerId" : "customer002",
+						"status"	 : "true"
 					}]
+				}	
+			2. Error (400,401,404,500)
+				Body
+				{ 
+					"msg"		: "failed operation",
+					"code"		: 400,
+					"eventId"	: "dbfhjsdb-hfb-do8ryt-876t7-5ty"
+					"error"		: {
+						"type"	: "BAD_REQUEST",
+						"title"	: "Invalid Request",
+						"details" : "The input contains invalid data"
+					}
 				}
 
 
@@ -149,3 +197,7 @@ password: Salesforce1
 Database: 
 username: maheshpkumar198@gmail.com
 password: Salesforce1
+
+Git:
+UserName: Mak198
+Password: Githubone1
