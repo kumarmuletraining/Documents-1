@@ -192,7 +192,8 @@ password: ABCmaheshapril2022
 
 Salesforce:
 username: makm@raweng.com
-password: Salesforce1
+password: Salesforce1 (hzD9AGk86iby4lsHMwYU5A==)
+Security token: xQOFrnRaHc7zO38eShDq91FrF (J13GKrWNkQOUUd102UpkhS8UaHiydcz3zli60acv2YY=)
 
 Database: 
 username: maheshpkumar198@gmail.com
@@ -201,3 +202,10 @@ password: Salesforce1
 Git:
 UserName: Mak198
 Password: Githubone1
+
+
+java -cp secure-properties-tool.jar com.mulesoft.tools.SecurePropertiesTool string encrypt Blowfish CBC mulesoft123 "Salesforce1"
+hzD9AGk86iby4lsHMwYU5A==
+
+java -cp secure-properties-tool.jar com.mulesoft.tools.SecurePropertiesTool string encrypt Blowfish CBC mulesoft123 "xQOFrnRaHc7zO38eShDq91FrF"
+J13GKrWNkQOUUd102UpkhS8UaHiydcz3zli60acv2YY=
