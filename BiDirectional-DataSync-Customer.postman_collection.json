@@ -31,7 +31,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"customerRequest\": [\r\n    {\r\n      \"customerId\": \"Customer1003\",\r\n      \"customerName\": \"Name1003\",\r\n      \"address\": \"House1003\",\r\n      \"email\": \"email1003@gmail.com\",\r\n      \"dob\": \"21-12-2003\",\r\n      \"phone\": \"2378643503\",\r\n      \"gender\": \"Female\",\r\n      \"status\": \"false\",\r\n      \"registrationDateTime\": \"12-02-2233T12:23:03\"\r\n    },\r\n    {\r\n      \"customerId\": \"Customer1004\",\r\n      \"customerName\": \"Name1004\",\r\n      \"address\": \"House1004\",\r\n      \"email\": \"email1004@gmail.com\",\r\n      \"dob\": \"21-12-2004\",\r\n      \"phone\": \"2378643504\",\r\n      \"gender\": \"Female\",\r\n      \"status\": \"false\",\r\n      \"registrationDateTime\": \"12-02-2233T12:23:04\"\r\n    }\r\n  ]\r\n}",
+							"raw": "{\r\n  \"customerRequest\": [\r\n    {\r\n      \"customerId\": \"Customer1003\",\r\n      \"customerName\": \"Name1003\",\r\n      \"address\": \"House1003\",\r\n      \"email\": \"email1003@gmail.com\",\r\n      \"dob\": \"21-12-1003\",\r\n      \"phone\": \"2378641003\",\r\n      \"gender\": \"Female\",\r\n      \"status\": \"false\",\r\n      \"registrationDateTime\": \"12-02-2233T12:23:01\"\r\n    },\r\n    {\r\n      \"customerId\": \"Customer1004\",\r\n      \"customerName\": \"Name1004\",\r\n      \"address\": \"House1004\",\r\n      \"email\": \"email1004@gmail.com\",\r\n      \"dob\": \"21-12-1004\",\r\n      \"phone\": \"2378641004\",\r\n      \"gender\": \"Female\",\r\n      \"status\": \"false\",\r\n      \"registrationDateTime\": \"12-02-2233T12:23:02\"\r\n    }\r\n  ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -79,7 +79,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"customerRequest\": [\r\n    {\r\n      \"customerId\": \"Customer1001\",\r\n      \"customerName\": \"Name1001\",\r\n      \"address\": \"House1001\",\r\n      \"email\": \"email1001@gmail.com\",\r\n      \"dob\": \"21-12-2001\",\r\n      \"phone\": \"1000643501\",\r\n      \"gender\": \"Female\",\r\n      \"status\": \"false\",\r\n      \"registrationDateTime\": \"12-02-2233T12:23:01\"\r\n    },\r\n    {\r\n      \"customerId\": \"Customer1002\",\r\n      \"customerName\": \"Name1002\",\r\n      \"address\": \"House1002\",\r\n      \"email\": \"email1002@gmail.com\",\r\n      \"dob\": \"21-12-2002\",\r\n      \"phone\": \"1000643502\",\r\n      \"gender\": \"Female\",\r\n      \"status\": \"false\",\r\n      \"registrationDateTime\": \"12-02-2233T12:23:02\"\r\n    }\r\n  ]\r\n}",
+							"raw": "{\r\n  \"customerRequest\": [\r\n    {\r\n        \"customerId\": \"Customer1005\",\r\n        \"customerName\": \"Name1005\",\r\n        \"email\": \"email1005@gmail.com\",\r\n        \"phone\": \"2378641005\",\r\n        \"address\": \"House1005\",\r\n        \"dob\": \"21-12-1005\",\r\n        \"gender\": \"Female\",\r\n        \"status\": \"false\",\r\n        \"registrationDateTime\": \"12-02-2233T12:23:01\",\r\n        \"lastModifiedDateTime\": \"21-04-2022T01:00:18\",\r\n        \"sfdcId\": \"a015i000009YKU8AAO\"\r\n    },\r\n    {\r\n        \"customerId\": \"Customer1006\",\r\n        \"customerName\": \"Name1006\",\r\n        \"email\": \"email1006@gmail.com\",\r\n        \"phone\": \"2378641006\",\r\n        \"address\": \"House1006\",\r\n        \"dob\": \"21-12-1006\",\r\n        \"gender\": \"Female\",\r\n        \"status\": \"false\",\r\n        \"registrationDateTime\": \"12-02-2233T12:23:02\",\r\n        \"lastModifiedDateTime\": \"21-04-2022T01:00:18\",\r\n        \"sfdcId\": \"a015i000009YKU9AAO\"\r\n    }\r\n]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -128,7 +128,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"customerRequest\": [\r\n    {\r\n      \"customerId\": \"Customer1001\",\r\n      \"customerName\": \"Name1001\",\r\n      \"address\": \"House1001\",\r\n      \"email\": \"email1001@gmail.com\",\r\n      \"dob\": \"21-12-2001\",\r\n      \"phone\": \"2378643501\",\r\n      \"gender\": \"Female\",\r\n      \"status\": \"false\",\r\n      \"registrationDateTime\": \"12-02-2233T12:23:01\"\r\n    }\r\n  ]\r\n}",
+							"raw": "{\r\n  \"customerRequest\": [\r\n    {\r\n        \"customerId\": \"Customer1001\",\r\n        \"customerName\": \"Name1001\",\r\n        \"email\": \"email1001@gmail.com\",\r\n        \"phone\": 1000000001,\r\n        \"address\": \"House1001\",\r\n        \"dob\": \"21-12-1001\",\r\n        \"gender\": \"Female\",\r\n        \"registrationDateTime\": \"12-02-2233T12:23:01\",\r\n        \"lastModifiedDateTime\": \"20-04-2022T03:03:42\",\r\n        \"sfdcId\": \"a015i000009Y8twAAC\"\r\n    },\r\n    {\r\n        \"customerId\": \"Customer1002\",\r\n        \"customerName\": \"Name1002\",\r\n        \"email\": \"email1002@gmail.com\",\r\n        \"phone\": 1000000002,\r\n        \"address\": \"House1002\",\r\n        \"dob\": \"21-12-1002\",\r\n        \"gender\": \"Female\",\r\n        \"registrationDateTime\": \"12-02-2233T12:23:02\",\r\n        \"lastModifiedDateTime\": \"20-04-2022T03:03:42\",\r\n        \"sfdcId\": \"a015i000009Y8txAAC\"\r\n    },\r\n    {\r\n        \"customerId\": \"Customer1003\",\r\n        \"customerName\": \"Name1003\",\r\n        \"email\": \"email1003@gmail.com\",\r\n        \"phone\": 1000000003,\r\n        \"address\": \"House1003\",\r\n        \"dob\": \"21-12-1003\",\r\n        \"gender\": \"Female\",\r\n        \"registrationDateTime\": \"12-02-2233T12:23:01\",\r\n        \"lastModifiedDateTime\": \"20-04-2022T11:38:10\",\r\n        \"sfdcId\": \"a015i000009YKT8AAO\"\r\n    },\r\n    {\r\n        \"customerId\": \"Customer1004\",\r\n        \"customerName\": \"Name1004\",\r\n        \"email\": \"email1004@gmail.com\",\r\n        \"phone\": 1000000004,\r\n        \"address\": \"House1004\",\r\n        \"dob\": \"21-12-1004\",\r\n        \"gender\": \"Female\",\r\n        \"registrationDateTime\": \"12-02-2233T12:23:02\",\r\n        \"lastModifiedDateTime\": \"20-04-2022T11:38:10\",\r\n        \"sfdcId\": \"a015i000009YKT9AAO\"\r\n    }\r\n]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -175,7 +175,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://0.0.0.0:8081/api/customers?lastModifiedDateTime=17-04-2022T02:20:43&status=false",
+							"raw": "http://0.0.0.0:8081/api/customers?lastModifiedDateTime=17-04-2022T02:20:43",
 							"protocol": "http",
 							"host": [
 								"0",
@@ -195,7 +195,8 @@
 								},
 								{
 									"key": "status",
-									"value": "false"
+									"value": "false",
+									"disabled": true
 								},
 								{
 									"key": "customerId",
@@ -229,7 +230,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://0.0.0.0:8081/api/customers/status?lastModifiedDateTime=12-02-2233T12:23:02",
+							"raw": "http://0.0.0.0:8081/api/customers/status?lastModifiedDateTime=02-04-2022T12:23:02",
 							"protocol": "http",
 							"host": [
 								"0",
@@ -246,7 +247,7 @@
 							"query": [
 								{
 									"key": "lastModifiedDateTime",
-									"value": "12-02-2233T12:23:02"
+									"value": "02-04-2022T12:23:02"
 								},
 								{
 									"key": "customerId",
@@ -339,7 +340,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"customerRequest\": [\r\n    {\r\n      \"customerId\": \"Customer1003\",\r\n      \"customerName\": \"Name1003\",\r\n      \"address\": \"House1003\",\r\n      \"email\": \"email1003@gmail.com\",\r\n      \"dob\": \"21-12-2003\",\r\n      \"phone\": \"2378643503\",\r\n      \"gender\": \"Female\",\r\n      \"status\": \"false\",\r\n      \"registrationDateTime\": \"12-02-2233T12:23:03\"\r\n    },\r\n    {\r\n      \"customerId\": \"Customer1004\",\r\n      \"customerName\": \"Name1004\",\r\n      \"address\": \"House1004\",\r\n      \"email\": \"email1004@gmail.com\",\r\n      \"dob\": \"21-12-2004\",\r\n      \"phone\": \"2378643504\",\r\n      \"gender\": \"Female\",\r\n      \"status\": \"false\",\r\n      \"registrationDateTime\": \"12-02-2233T12:23:04\"\r\n    }\r\n  ]\r\n}",
+							"raw": "{\r\n  \"customerRequest\": [\r\n    {\r\n      \"customerId\": \"Customer1005\",\r\n      \"customerName\": \"Name1005\",\r\n      \"address\": \"House1005\",\r\n      \"email\": \"email1005@gmail.com\",\r\n      \"dob\": \"21-12-1005\",\r\n      \"phone\": \"2378641005\",\r\n      \"gender\": \"Female\",\r\n      \"status\": \"false\",\r\n      \"registrationDateTime\": \"12-02-2233T12:23:01\"\r\n    },\r\n    {\r\n      \"customerId\": \"Customer1006\",\r\n      \"customerName\": \"Name1006\",\r\n      \"address\": \"House1006\",\r\n      \"email\": \"email1006@gmail.com\",\r\n      \"dob\": \"21-12-1006\",\r\n      \"phone\": \"2378641006\",\r\n      \"gender\": \"Female\",\r\n      \"status\": \"false\",\r\n      \"registrationDateTime\": \"12-02-2233T12:23:02\"\r\n    }\r\n  ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
