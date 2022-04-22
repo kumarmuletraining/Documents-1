@@ -1,0 +1,395 @@
+Mule 4 - Salesforce to MySql Bidirectional with Exception Handling, MUnit, API Led Connectivity, Water Marking  
+& Batch Processing, CI/CD with Any version control tool. 
+
+1. Database Details:
+	CREATE TABLE `customer` (
+	  `customerId` varchar(50) NOT NULL,
+	  `customerName` varchar(50) DEFAULT NULL,
+	  `address` varchar(50) DEFAULT NULL,
+	  `email` varchar(50) DEFAULT NULL,
+	  `dob` varchar(50) DEFAULT NULL,
+	  `phone` int DEFAULT NULL,
+	  `gender` varchar(50) DEFAULT NULL,
+	  `registrationDateTime` varchar(50) DEFAULT NULL,
+	  `lastModifiedDateTime` varchar(50) NOT NULL,
+	  PRIMARY KEY (`customerId`)
+	)
+
+2. Salesforce Details: Object Name : customer
+	customerId varchar(50)
+	customerName varchar(50)
+	address varchar(50)
+	email varchar(50)
+	dob varchar(50)
+	phone int DEFAULT
+	gender varchar(50) DEFAULT
+	status varchar(50) DEFAULT
+	registrationDateTime varchar(50)
+	lastModifiedDateTime varchar(50)
+
+
+3. API Details: 
+	1. Post customers details 
+		A. Resources : /customers:
+		B. Method 	 : post
+		B. request :
+			1. Headers: 
+				a. transactionId
+				b. clientId
+				c. clientSecret
+			3. body:
+				{
+				  "customerRequest": [
+					{
+					  "customerId": "Customer1001",
+					  "customerName": "Name1001",
+					  "address": "House1001",
+					  "email": "email1001@gmail.com",
+					  "dob": "21-12-2001",
+					  "phone": "2378643501",
+					  "gender": "Female",
+					  "status": "false",
+					  "registrationDateTime": "12-02-2233T12:23:01"
+					},
+					{
+					  "customerId": "Customer1002",
+					  "customerName": "Name1002",
+					  "address": "House1002",
+					  "email": "email1002@gmail.com",
+					  "dob": "21-12-2002",
+					  "phone": "2378643502",
+					  "gender": "Female",
+					  "status": "false",
+					  "registrationDateTime": "12-02-2233T12:23:02"
+					}
+				  ]
+				}
+		C. Response
+			1. 200
+				Body
+				{
+					"customerResponse" : [{
+						"customerId" : "customer001",
+						"status"	 : "true"
+					},
+					{
+						"customerId" : "customer002",
+						"status"	 : "true"
+					}]
+				}	
+			2. Error (400,401,404,500)
+				Body
+				{ 
+					"msg"		: "failed operation",
+					"code"		: 400,
+					"eventId"	: "dbfhjsdb-hfb-do8ryt-876t7-5ty"
+					"error"		: {
+						"type"	: "BAD_REQUEST",
+						"title"	: "Invalid Request",
+						"details" : "The input contains invalid data"
+					}
+				}
+
+	
+	2. Get customer details
+		A. Resource: /customers
+		   Method  : get
+		B. request :
+			1. Headers: 
+				a. transactionId
+				b. clientId
+				c. clientSecret
+			2. queryParams
+				a. lastModifiedDateTime (optional)
+				b. status (optional)
+				c. customerId (optional)
+		C. Response
+			1. 200
+				Body
+				{
+					"customerStatusResponse" : [{
+						"customerId" : "customer001",
+						"status"	 : "true"
+					}]
+				}
+			2. Error (400,401,404,500)
+				Body
+				{ 
+					"msg"		: "failed operation",
+					"code"		: 400,
+					"eventId"	: "dbfhjsdb-hfb-do8ryt-876t7-5ty"
+					"error"		: {
+						"type"	: "BAD_REQUEST",
+						"title"	: "Invalid Request",
+						"details" : "The input contains invalid data"
+					}
+				}
+				
+	3. Patch customer status details ( blocked )
+		A. Resource: /customers
+		   Method:   post
+		B. request :
+			1. Headers: 
+				a. transactionId
+				b. clientId
+				c. clientSecret
+			2. Body:
+				{
+				  "customerRequest": [
+					{
+					  "customerId": "Customer1001",
+					  "customerName": "Name1001",
+					  "address": "House1001",
+					  "email": "email1001@gmail.com",
+					  "dob": "21-12-2001",
+					  "phone": "2378643501",
+					  "gender": "Female",
+					  "status": "false",
+					  "registrationDateTime": "12-02-2233T12:23:01"
+					},
+					{
+					  "customerId": "Customer1002",
+					  "customerName": "Name1002",
+					  "address": "House1002",
+					  "email": "email1002@gmail.com",
+					  "dob": "21-12-2002",
+					  "phone": "2378643502",
+					  "gender": "Female",
+					  "status": "false",
+					  "registrationDateTime": "12-02-2233T12:23:02"
+					}
+				  ]
+				}
+		C. Response
+			1. 200
+				Body
+				{
+					"customerResponse" : [{
+						"customerId" : "customer001",
+						"status"	 : "true"
+					},
+					{
+						"customerId" : "customer002",
+						"status"	 : "true"
+					}]
+				}	
+			2. Error (400,401,404,500)
+				Body
+				{ 
+					"msg"		: "failed operation",
+					"code"		: 400,
+					"eventId"	: "dbfhjsdb-hfb-do8ryt-876t7-5ty"
+					"error"		: {
+						"type"	: "BAD_REQUEST",
+						"title"	: "Invalid Request",
+						"details" : "The input contains invalid data"
+					}
+				}
+	4. Get customer status details
+		A. Resource: /customers/status
+		   Method:   get
+		B. request :
+			1. Headers: 
+				a. transactionId
+				b. clientId
+				c. clientSecret
+			2. Query Parameter 
+				a. lastModifiedDateTime
+				b. status
+			2. Body:
+				{
+				  "customerRequest": [
+					{
+					  "customerId": "Customer1001",
+					  "customerName": "Name1001",
+					  "address": "House1001",
+					  "email": "email1001@gmail.com",
+					  "dob": "21-12-2001",
+					  "phone": "2378643501",
+					  "gender": "Female",
+					  "status": "false",
+					  "registrationDateTime": "12-02-2233T12:23:01"
+					},
+					{
+					  "customerId": "Customer1002",
+					  "customerName": "Name1002",
+					  "address": "House1002",
+					  "email": "email1002@gmail.com",
+					  "dob": "21-12-2002",
+					  "phone": "2378643502",
+					  "gender": "Female",
+					  "status": "false",
+					  "registrationDateTime": "12-02-2233T12:23:02"
+					}
+				  ]
+				}
+		C. Response
+			1. 200
+				Body
+				{
+					"customerResponse" : [{
+						"customerId" : "customer001",
+						"status"	 : "true"
+					},
+					{
+						"customerId" : "customer002",
+						"status"	 : "true"
+					}]
+				}	
+			2. Error (400,401,404,500)
+				Body
+				{ 
+					"msg"		: "failed operation",
+					"code"		: 400,
+					"eventId"	: "dbfhjsdb-hfb-do8ryt-876t7-5ty"
+					"error"		: {
+						"type"	: "BAD_REQUEST",
+						"title"	: "Invalid Request",
+						"details" : "The input contains invalid data"
+					}
+				}
+
+	5. Post customers details 
+		A. Resources : /customers/status:
+		B. Method 	 : post
+		B. request :
+			1. Headers: 
+				a. transactionId
+				b. clientId
+				c. clientSecret
+			3. body:
+				{
+				  "customerRequest": [
+					{
+					  "customerId": "Customer1001",
+					  "customerName": "Name1001",
+					  "address": "House1001",
+					  "email": "email1001@gmail.com",
+					  "dob": "21-12-2001",
+					  "phone": "2378643501",
+					  "gender": "Female",
+					  "status": "false",
+					  "registrationDateTime": "12-02-2233T12:23:01"
+					},
+					{
+					  "customerId": "Customer1002",
+					  "customerName": "Name1002",
+					  "address": "House1002",
+					  "email": "email1002@gmail.com",
+					  "dob": "21-12-2002",
+					  "phone": "2378643502",
+					  "gender": "Female",
+					  "status": "false",
+					  "registrationDateTime": "12-02-2233T12:23:02"
+					}
+				  ]
+				}
+		C. Response
+			1. 200
+				Body
+				{
+					"customerResponse" : [{
+						"customerId" : "customer001",
+						"status"	 : "true"
+					},
+					{
+						"customerId" : "customer002",
+						"status"	 : "true"
+					}]
+				}	
+			2. Error (400,401,404,500)
+				Body
+				{ 
+					"msg"		: "failed operation",
+					"code"		: 400,
+					"eventId"	: "dbfhjsdb-hfb-do8ryt-876t7-5ty"
+					"error"		: {
+						"type"	: "BAD_REQUEST",
+						"title"	: "Invalid Request",
+						"details" : "The input contains invalid data"
+					}
+				}
+
+
+Anypoint Platform : 
+username : maheshapril2022
+password: ABCmaheshapril2022
+
+Salesforce:
+username: makm@raweng.com
+password: Salesforce1 (hzD9AGk86iby4lsHMwYU5A==)
+Security token: xQOFrnRaHc7zO38eShDq91FrF ()
+
+Database: 
+username: maheshpkumar198@gmail.com
+password: Salesforce1
+
+Git:
+UserName: Mak198
+Password: Githubone1
+
+
+java -cp secure-properties-tool.jar com.mulesoft.tools.SecurePropertiesTool string encrypt Blowfish CBC mulesoft123 "Salesforce1"
+hzD9AGk86iby4lsHMwYU5A==
+
+java -cp secure-properties-tool.jar com.mulesoft.tools.SecurePropertiesTool string encrypt Blowfish CBC mulesoft123 "xQOFrnRaHc7zO38eShDq91FrF"
+J13GKrWNkQOUUd102UpkhS8UaHiydcz3zli60acv2YY=
+
+java -cp secure-properties-tool.jar com.mulesoft.tools.SecurePropertiesTool string encrypt Blowfish CBC mulesoft123 "33i4CYAYazaKxqWNALI0"
+WSLbnRzVfv04pQd+MhKWqOi4tti4lZDA
+
+
+"Select customerId__c, customerName__c, email__c, phone__c, address__c, dob__c, gender__c, status__c, registrationDateTime__c, lastModifiedDateTime__c from CustomerDetails__c where customerId__c = ':CustomerId' and status__c = ':status' and lastModifiedDateTime__c = ':lastModifiedDateTime'"
+
+%dw 2.0
+output application/json
+var whereClauseVar = if(vars.requestData.requestQueryParam.customerId != null or vars.requestData.requestQueryParam.status != null or vars.requestData.requestQueryParam.lastModifiedDateTime != null)(true)else(false)
+var customerIdVar = if(vars.requestData.requestQueryParam.customerId != null)(true)else(false)
+var statusVar = if(vars.requestData.requestQueryParam.status != null)(true)else(false)
+var lastModifiedDateTimeVar = if(vars.requestData.requestQueryParam.lastModifiedDateTime != null)(true)else(false)
+---
+("Select customerId__c, customerName__c, email__c, phone__c, address__c, dob__c, gender__c, status__c, registrationDateTime__c, lastModifiedDateTime__c from CustomerDetails__c" ++ (if(whereClauseVar)(" where")else("")) ++ 
+(if(customerIdVar)(" and customerId__c = '" ++ vars.requestData.requestQueryParam.customerId ++ "'") else("")) ++  
+(if(statusVar)(" and status__c = '" ++ vars.requestData.requestQueryParam.status ++ "'") else("")) ++
+(if(lastModifiedDateTimeVar)(" and lastModifiedDateTime__c > '" ++ vars.requestData.requestQueryParam.lastModifiedDateTime ++ "'") else(""))) replace  ("where and") with ("where")
+
+
+
+git clone master https://github.com/Mulesoft-InvestmentBanking/assessment-papi-app-v1-.git assessment-sapi-app-v1
+
+
+
+
+
+
+curl --location --request POST 'http://0.0.0.0:8081/api/customers' \
+--header 'transactionId: 123456789123456789123456789123456' \
+--header 'clientId: 123456789123456789123456789123456' \
+--header 'clientSecret: 123456789123456789123456789123456' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "customerRequest": [
+    {
+      "customerId": "Customer1003",
+      "customerName": "Name1003",
+      "address": "House1003",
+      "email": "email1003@gmail.com",
+      "dob": "21-12-2003",
+      "phone": "2378643503",
+      "gender": "Female",
+      "status": "false",
+      "registrationDateTime": "12-02-2233T12:23:03"
+    },
+    {
+      "customerId": "Customer1004",
+      "customerName": "Name1004",
+      "address": "House1004",
+      "email": "email1004@gmail.com",
+      "dob": "21-12-2004",
+      "phone": "2378643504",
+      "gender": "Female",
+      "status": "false",
+      "registrationDateTime": "12-02-2233T12:23:04"
+    }
+  ]
+}'
